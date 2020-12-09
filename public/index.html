@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 1</title>
+    <script>
+      function getConfig () {
+        document.getElementById('firstName').innerHTML = ''
+        document.getElementById('lastName').innerHTML = ''
+        fetch('http://localhost:8100/config')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            document.getElementById('firstName').innerHTML = data.firstName
+            document.getElementById('lastName').innerHTML = data.lastName
+          })
+        .catch((errorCode) => {
+          console.log(JSON.stringify(errorCode));
+          document.write("Error");
+          document.write(errorCode);
+        })
+      }
+    </script>
+</head>
+
+<body>
+<h1>Hei</h1>
+
+<p></p>
+<button onclick="getConfig()">Hent config</button>
+<br>
+<h3><strong id="firstName"></strong> <strong id="lastName"></strong></h3>
+</body>
