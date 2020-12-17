@@ -7,7 +7,7 @@
       function getConfig () {
         document.getElementById('firstName').innerHTML = ''
         document.getElementById('lastName').innerHTML = ''
-        fetch('http://localhost:8100/config')
+        fetch('/config/config')
           .then(response => response.json())
           .then(data => {
             console.log(data)
